@@ -1,0 +1,679 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ООО "Мегафрут" - Яблоки из КБР по всей России</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root {
+            --color-primary: #2e7d32;
+            --color-secondary: #ffb300;
+            --color-accent: #d84315;
+            --bg-color: #f8f9fa;
+            --text-color: #212529;
+            --card-bg: #ffffff;
+            --header-bg: rgba(255, 255, 255, 0.98);
+            --footer-bg: #1a1a1a;
+            --footer-text: #bdbdbd;
+            --footer-heading: #ffffff;
+        }
+
+        .dark-mode {
+            --bg-color: #121212;
+            --text-color: #e0e0e0;
+            --card-bg: #1e1e1e;
+            --header-bg: rgba(30, 30, 30, 0.98);
+            --footer-bg: #000000;
+            --footer-text: #9e9e9e;
+            --footer-heading: #ffffff;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Montserrat', sans-serif;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+            font-size: 16px;
+        }
+
+        .gradient-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(46,125,50,0.1) 0%, rgba(255,179,0,0.1) 100%);
+            z-index: -1;
+        }
+
+        h1, h2, h3, h4 {
+            font-family: 'Playfair Display', serif;
+            font-weight: 600;
+        }
+
+        header {
+            background-color: var(--header-bg);
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+            padding: 20px 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+        }
+
+        .logo-text h1 {
+            color: var(--color-primary);
+            font-size: 24px;
+            margin-bottom: 5px;
+        }
+
+        .logo-text p {
+            color: var(--color-secondary);
+            font-size: 14px;
+            font-style: italic;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            align-items: center;
+        }
+
+        nav ul li {
+            margin-left: 25px;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: var(--text-color);
+            font-weight: 500;
+            transition: color 0.3s;
+            padding: 8px 12px;
+            border-radius: 6px;
+        }
+
+        nav ul li a:hover {
+            color: var(--color-primary);
+            background-color: rgba(46, 125, 50, 0.1);
+        }
+
+        .theme-toggle {
+            background: none;
+            border: none;
+            color: var(--text-color);
+            font-size: 20px;
+            cursor: pointer;
+            margin-left: 15px;
+            transition: transform 0.3s;
+        }
+
+        .theme-toggle:hover {
+            transform: rotate(30deg);
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            background-color: var(--color-primary);
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+            background-color: #245a27;
+        }
+
+        section {
+            padding: 80px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .section-title h2 {
+            font-size: 36px;
+            color: var(--color-primary);
+            position: relative;
+            display: inline-block;
+            padding-bottom: 15px;
+        }
+
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background-color: var(--color-secondary);
+        }
+
+        .about {
+            background-color: var(--card-bg);
+            border-radius: 12px;
+            padding: 40px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+            margin-bottom: 40px;
+        }
+
+        .about p {
+            margin-bottom: 20px;
+            font-size: 16px;
+            line-height: 1.8;
+        }
+
+        .requisites {
+            background-color: var(--card-bg);
+            border-radius: 12px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+
+        .requisites h3 {
+            color: var(--color-primary);
+            margin-bottom: 20px;
+            font-size: 24px;
+        }
+
+        .requisites-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+
+        .requisites-table th, .requisites-table td {
+            padding: 12px 15px;
+            text-align: left;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+        }
+
+        .requisites-table th {
+            width: 30%;
+            color: var(--color-secondary);
+            font-weight: 600;
+        }
+
+        .assortment {
+            background-color: var(--card-bg);
+            border-radius: 12px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+
+        .assortment h3 {
+            color: var(--color-primary);
+            margin-bottom: 20px;
+            font-size: 24px;
+        }
+
+        .assortment-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        .product-card {
+            background-color: var(--card-bg);
+            border-radius: 10px;
+            padding: 25px;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .product-card h4 {
+            color: var(--color-primary);
+            margin-bottom: 10px;
+            font-size: 20px;
+        }
+
+        .product-card p {
+            color: var(--text-color);
+            opacity: 0.9;
+        }
+
+        .team {
+            background-color: var(--bg-color);
+        }
+
+        .team-members {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 30px;
+        }
+
+        .team-member {
+            background-color: var(--card-bg);
+            border-radius: 12px;
+            padding: 30px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            width: 280px;
+            text-align: center;
+        }
+
+        .team-member h3 {
+            color: var(--color-primary);
+            margin-bottom: 10px;
+            font-size: 20px;
+        }
+
+        .team-member p {
+            color: var(--color-secondary);
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+
+        /* Premium Footer */
+        footer {
+            background-color: var(--footer-bg);
+            color: var(--footer-text);
+            padding: 70px 0 30px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(90deg, var(--color-primary), var(--color-secondary));
+        }
+
+        .footer-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 50px;
+        }
+
+        .footer-column {
+            padding: 0 15px;
+        }
+
+        .footer-logo-text h3 {
+            color: var(--footer-heading);
+            font-size: 20px;
+            margin-bottom: 5px;
+        }
+
+        .footer-logo-text p {
+            color: var(--footer-text);
+            font-size: 14px;
+        }
+
+        .footer-column h4 {
+            color: var(--footer-heading);
+            font-size: 18px;
+            margin-bottom: 20px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        .footer-column h4::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 40px;
+            height: 2px;
+            background-color: var(--color-secondary);
+        }
+
+        .footer-column p, .footer-column a {
+            color: var(--footer-text);
+            margin-bottom: 12px;
+            font-size: 15px;
+            line-height: 1.6;
+        }
+
+        .footer-column a {
+            text-decoration: none;
+            transition: color 0.3s;
+            display: block;
+        }
+
+        .footer-column a:hover {
+            color: white;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .footer-bottom p {
+            color: var(--footer-text);
+            font-size: 14px;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .social-links a {
+            color: var(--footer-text);
+            font-size: 18px;
+            transition: color 0.3s, transform 0.3s;
+        }
+
+        .social-links a:hover {
+            color: var(--color-secondary);
+            transform: translateY(-3px);
+        }
+
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            nav ul {
+                margin-top: 15px;
+                justify-content: center;
+            }
+
+            nav ul li {
+                margin: 0 10px;
+            }
+
+            .footer-container {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+
+            .section-title h2 {
+                font-size: 30px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="gradient-bg"></div>
+
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <a href="/" class="logo">
+                    <div class="logo-text">
+                        <h1>ООО "Мегафрут"</h1>
+                        <p>Яблоки из КБР по всей России</p>
+                    </div>
+                </a>
+                <nav>
+                    <ul>
+                        <li><a href="#about">О компании</a></li>
+                        <li><a href="#assortment">Ассортимент</a></li>
+                        <li><a href="#requisites">Реквизиты</a></li>
+                        <li><a href="#team">Команда</a></li>
+                        <li>
+                            <button class="theme-toggle" id="theme-toggle">
+                                <i class="fas fa-moon"></i>
+                            </button>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <main class="container" id="main-content">
+        <section class="hero">
+            <div class="container">
+                <div class="hero-content">
+                    <h2>Сочные яблоки из Кабардино-Балкарии</h2>
+                    <p>Натуральные, экологически чистые яблоки, выращенные в уникальных климатических условиях Северного Кавказа</p>
+                    <a href="#about" class="btn">О компании</a>
+                </div>
+            </div>
+        </section>
+
+        <section id="about" class="container">
+            <div class="section-title">
+                <h2>О нашей компании</h2>
+            </div>
+            <div class="about">
+                <p>ООО "Мегафрут" - ведущий поставщик яблок из Кабардино-Балкарской Республики по всей России. Наша компания была основана в 2024 году и за короткое время заслужила репутацию надежного партнера, предлагающего только качественную продукцию.</p>
+                <p>Мы сотрудничаем с лучшими садоводческими хозяйствами КБР, где яблоки выращиваются с соблюдением всех экологических норм и требований. Наши сады расположены в предгорьях Кавказа, где уникальный микроклимат и плодородные почвы создают идеальные условия для выращивания сочных, ароматных яблок с насыщенным вкусом.</p>
+                <p>Современные технологии хранения и логистики позволяют нам поставлять свежие яблоки в любую точку России, сохраняя все их полезные свойства и вкусовые качества.</p>
+            </div>
+        </section>
+
+        <section id="assortment" class="container">
+            <div class="section-title">
+                <h2>Наш ассортимент</h2>
+            </div>
+            <div class="assortment">
+                <h3>Яблоки высшего качества</h3>
+                <div class="assortment-grid">
+                    <div class="product-card">
+                        <h4>Яблоки Голден</h4>
+                        <p>Сладкие, сочные яблоки с нежной мякотью и золотистой кожурой. Идеальны для свежего потребления и приготовления десертов.</p>
+                    </div>
+                    <div class="product-card">
+                        <h4>Яблоки Джерамин</h4>
+                        <p>Ароматные яблоки с кисло-сладким вкусом и плотной мякотью. Отлично подходят для хранения и транспортировки.</p>
+                    </div>
+                    <div class="product-card">
+                        <h4>Яблоки Гала</h4>
+                        <p>Популярный сорт с гармоничным вкусом и приятным ароматом. Универсальны в использовании.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="requisites" class="container">
+            <div class="section-title">
+                <h2>Реквизиты компании</h2>
+            </div>
+            <div class="requisites">
+                <h3>Основные реквизиты</h3>
+                <table class="requisites-table">
+                    <tr>
+                        <th>Полное наименование</th>
+                        <td>Общество с ограниченной ответственностью "Мегафрут"</td>
+                    </tr>
+                    <tr>
+                        <th>Сокращенное наименование</th>
+                        <td>ООО "Мегафрут"</td>
+                    </tr>
+                    <tr>
+                        <th>ОГРН</th>
+                        <td>1241500006835 от 23 декабря 2024 г.</td>
+                    </tr>
+                    <tr>
+                        <th>ИНН/КПП</th>
+                        <td>1500021385 / 150001001</td>
+                    </tr>
+                    <tr>
+                        <th>Дата регистрации</th>
+                        <td>23.12.2024</td>
+                    </tr>
+                    <tr>
+                        <th>Уставный капитал</th>
+                        <td>10 000 руб.</td>
+                    </tr>
+                    <tr>
+                        <th>Юридический адрес</th>
+                        <td>363753, Республика Северная Осетия — Алания, Моздокский р-н, г Моздок, ул Кирова, зд. 41, офис 327</td>
+                    </tr>
+                    <tr>
+                        <th>Руководитель</th>
+                        <td>Генеральный директор Нефедова Евгения Валерьевна (с 23 декабря 2024 г.)</td>
+                    </tr>
+                    <tr>
+                        <th>Статус в реестре МСП</th>
+                        <td>Микропредприятие (присвоен 10 января 2025 г.)</td>
+                    </tr>
+                    <tr>
+                        <th>Основной вид деятельности</th>
+                        <td>Торговля оптовая фруктами и овощами (46.31)</td>
+                    </tr>
+                    <tr>
+                        <th>Налоговый орган</th>
+                        <td>Управление ФНС России по Республике Северная Осетия-Алания (с 23 декабря 2024 г.)</td>
+                    </tr>
+                    <tr>
+                        <th>Телефон</th>
+                        <td>8-928-606-11-55</td>
+                    </tr>
+                    <tr>
+                        <th>Электронная почта</th>
+                        <td>nev_opt@mail.ru</td>
+                    </tr>
+                </table>
+            </div>
+        </section>
+
+        <section id="team" class="team">
+            <div class="section-title">
+                <h2>Наша команда</h2>
+            </div>
+            <div class="team-members">
+                <div class="team-member">
+                    <div class="member-info">
+                        <h3>Нефедова Евгения Валерьевна</h3>
+                        <p>Генеральный директор</p>
+                        <p class="member-bio">Основатель и идейный вдохновитель ООО "Мегафрут". Более 10 лет опыта в оптовой торговле фруктами.</p>
+                    </div>
+                </div>
+                <div class="team-member">
+                    <div class="member-info">
+                        <h3>Татьяна</h3>
+                        <p>Специалист по контролю качества</p>
+                        <p class="member-bio">Обеспечивает соответствие всей нашей продукции высочайшим стандартам качества и безопасности.</p>
+                    </div>
+                </div>
+                <div class="team-member">
+                    <div class="member-info">
+                        <h3>Дмитрий</h3>
+                        <p>Менеджер по логистике</p>
+                        <p class="member-bio">Организует доставку нашей продукции по всей России в кратчайшие сроки.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-container">
+                <div class="footer-column">
+                    <div class="footer-logo-text">
+                        <h3>ООО "Мегафрут"</h3>
+                        <p>Поставщик качественных яблок из Кабардино-Балкарии</p>
+                    </div>
+                    <p>© 2024 Все права защищены</p>
+                </div>
+                <div class="footer-column">
+                    <h4>Контакты</h4>
+                    <p>г. Моздок, ул. Кирова, зд. 41, офис 327</p>
+                    <a href="tel:89286061155">8-928-606-11-55</a>
+                    <a href="mailto:nev_opt@mail.ru">nev_opt@mail.ru</a>
+                </div>
+                <div class="footer-column">
+                    <h4>Режим работы</h4>
+                    <p>Пн-Пт: 9:00 - 18:00</p>
+                    <p>Сб-Вс: выходной</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>Сайт разработан специально для ООО "Мегафрут"</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Проверяем сохраненную тему
+            const darkMode = localStorage.getItem('darkMode') === 'true';
+            const themeToggle = document.getElementById('theme-toggle');
+            
+            if (darkMode) {
+                document.body.classList.add('dark-mode');
+                themeToggle.innerHTML = '<i class="fas fa-sun"></i>';
+            }
+            
+            // Переключение темы
+            themeToggle.addEventListener('click', function() {
+                const isDarkMode = document.body.classList.toggle('dark-mode');
+                localStorage.setItem('darkMode', isDarkMode);
+                
+                // Меняем иконку
+                themeToggle.innerHTML = isDarkMode 
+                    ? '<i class="fas fa-sun"></i>' 
+                    : '<i class="fas fa-moon"></i>';
+            });
+            
+            // Плавная прокрутка
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
+                    const targetId = this.getAttribute('href');
+                    if (targetId === '#') return;
+                    
+                    const targetElement = document.querySelector(targetId);
+                    if (targetElement) {
+                        window.scrollTo({
+                            top: targetElement.offsetTop - 80,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
